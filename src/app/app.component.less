@@ -43,10 +43,10 @@
         #controls {
             flex-grow: 1;
             text-align: right;
-            margin-bottom: 1em;
 
             select {
                 padding: 0.5em;
+                margin-bottom: 1em;
             }
         }
 
@@ -62,8 +62,8 @@
                 hr {
                     width: 100%;
                     border-bottom: 0;
-                    margin-top: 0.6em;
-                    margin-bottom: 0.6em;
+                    margin-top: 0.65em;
+                    margin-bottom: 0.65em;
                 }
 
                 .chart-player-flex {
@@ -79,7 +79,8 @@
                             margin-right: 1em;
                             font-weight: bold;
                             font-size: 1.25em;
-                            margin-top: 0.5em;
+                            margin-top: 0em;
+                            margin-bottom: 0em;
                         }
                     }
                 
@@ -126,6 +127,53 @@
                 font-size: 1.1em;
                 font-weight: 500;
                 word-wrap: wrap;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        .flex-container {
+            #controls {
+                text-align: left;
+                div {
+                    display: inline;
+                    margin-right: 1em;
+                }
+            }
+
+            #chart {
+                margin: 0em;
+                width: 80vw;
+
+                .player-row {
+                    .chart-player-flex {
+                        .player-name {
+                            min-width: 9em;
+                            max-width: 9em;
+
+                            p {
+                                font-size: 1em;
+                            }
+                        }
+
+                        .bar-flex {
+                            .mentions-bar {
+                                max-height: 2em;
+                                min-height: 2em;
+
+                                p {
+                                    display: none;
+                                }
+                            }
+
+                            .player-img {
+                                display: none;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

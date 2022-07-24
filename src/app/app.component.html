@@ -6,20 +6,23 @@
 <div class="content" role="main">
 	<div class='flex-container'>
 		<div id='controls'>
-			<select (change)='updateChart($event)'>
-				<option selected value='player'>players</option>
-				<option value="team">teams</option>
-			</select>
-			<br>
-			<br>
-			<select (change)='updateDuration($event)'>
-				<option value='hour'>past hour</option>
-				<option value="day">past 24 hours</option>
-				<option selected value="week">past week</option>
-				<option value="month">past month</option>
-				<option value="year">past year</option>
-				<option value="alltime">all time</option>
-			</select>
+			<div>
+				<select (change)='updateChart($event)'>
+					<option selected value='player'>players</option>
+					<option value="team">teams</option>
+				</select>
+			</div>
+			
+			<div>
+				<select (change)='updateDuration($event)'>
+					<option value='hour'>past hour</option>
+					<option value="day">past 24 hours</option>
+					<option selected value="week">past week</option>
+					<option value="month">past month</option>
+					<option value="year">past year</option>
+					<option value="alltime">all time</option>
+				</select>
+			</div>
 		</div>
 
 		<div id='chart'>
