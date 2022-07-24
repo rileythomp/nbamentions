@@ -1,48 +1,46 @@
 <!-- Toolbar -->
 <div id="header" role="banner">
-  <p>r/NBA Trending Players</p>
+	<p>r/NBA Trending Players</p>
 </div>
 
 <div class="content" role="main">
+	<div class='flex-container'>
+		<div id='controls'>
+			<select (change)='updateChart($event)'>
+				<option value='hour'>past hour</option>
+				<option value="day">past 24 hours</option>
+				<option selected value="week">past week</option>
+				<option value="month">past month</option>
+			</select>
+		</div>
 
-  <div class='flex-container'>
-    <div id='chart'>
-      <div class='player-row' *ngFor='let p of players.slice(0, 10)'>
-        
-        <div class='chart-player-flex'>
+		<div id='chart'>
+			<div class='player-row' *ngFor='let p of players.slice(0, 10)'>
+				<div class='chart-player-flex'>
+					<div class='player-info player-name'>
+					<p>{{p.player}}</p>
+					</div>
 
-          <div class='player-info player-name'>
-            <p>{{p.player}}</p>
-          </div>
+					<div class='bar-flex'>
+						<div  class='player-info mentions-bar'>
+							<p>{{p.mentions}}</p>
+						</div>
 
-          <div class='bar-flex'>
-            <div  class='player-info mentions-bar'>
-              <p>{{p.mentions}}</p>
-            </div>
-  
-            <div  class='player-info player-img'>
-              <span class="img-helper"></span><img src="{{p.img_url}}"  />
-            </div>
-          </div>
+						<div  class='player-info player-img'>
+							<span class="img-helper"></span><img src="{{p.img_url}}"  />
+						</div>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>
 
-        </div>
-
-        <hr>
-
-      </div>
-    </div>
-
-
-    <div id='list'>
-      <ol>
-        <p *ngFor="let p of players.slice(10, 25); let i = index" [attr.data-index]="i">
-          {{i+11}}. {{p.player}}
-        </p>
-      </ol>
-    </div>
-  </div>
-
-
+		<div id='list'>
+			<p *ngFor="let p of players.slice(10, 25); let i = index" [attr.data-index]="i">
+				{{i+11}}. {{p.player}}
+			</p>
+		</div>
+	</div>
 </div>
 
 <router-outlet></router-outlet>

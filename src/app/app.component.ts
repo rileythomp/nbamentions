@@ -6,10 +6,14 @@ templateUrl: './app.component.html',
 styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+	readonly ApiUrl = 'http://localhost:5000';
+	readonly limit = 25;
+
 	players: any[] = [];
 	upperBound: number = 0;
+	duration: string = 'week';
 
-	getTrendingPlayers<T>(url: string): Promise<T> {
+	getPlayers<T>(url: string): Promise<T> {
 		return fetch(url)
 		  .then(response => {
 				if (!response.ok) {
@@ -22,8 +26,8 @@ export class AppComponent {
 		  })
 	}
 
-	ngOnInit() {
-		this.getTrendingPlayers<any>('http://localhost:5000/api/v1/trending?limit=30')
+	getTrendingPlayers() {
+		this.getPlayers<any>(`${this.ApiUrl}/api/v1/trending?limit=${this.limit}&duration=${this.duration}`)
 		.then(players => {
 				this.players = players
 				let max = 0
@@ -40,6 +44,10 @@ export class AppComponent {
 		})
 	}
 
+	ngOnInit() {
+		this.getTrendingPlayers()
+	}
+
 	ngAfterViewChecked() {
 		let barFlexes = document.getElementsByClassName('bar-flex')
 		if (barFlexes.length != 10) {
@@ -52,4 +60,8 @@ export class AppComponent {
 		}
 	}
 
+	updateChart(event: any) {
+		this.duration = event.target.value
+		this.getTrendingPlayers()
+	}
 }

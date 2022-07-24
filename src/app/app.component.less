@@ -38,10 +38,18 @@
         flex-wrap: wrap;
         margin-top: 1em;
 
+        #controls {
+            flex-grow: 1;
+        }
+
         #chart {
             flex-grow: 2;
+            margin-left: 1em;
+            margin-right: 1em;
 
             .player-row {
+                min-width: 40vw;
+
                 hr {
                     width: 100%;
                     border-bottom: 0;
@@ -65,7 +73,6 @@
                     .bar-flex {
                         display: flex;
                         width: 100%;
-                        min-width: 25em;
 
                         .mentions-bar {
                             background-color: lightcoral;
@@ -100,7 +107,6 @@
 
         #list {
             flex-grow: 1;
-            min-width: 15em;
         }
     }
 }
