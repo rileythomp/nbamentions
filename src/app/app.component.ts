@@ -50,13 +50,13 @@ export class AppComponent {
 
 	ngAfterViewChecked() {
 		let barFlexes = document.getElementsByClassName('bar-flex')
-		if (barFlexes.length != 10) {
+		if (barFlexes.length != 9) {
 			return
 		}
 		let mentionsBar = document.getElementsByClassName('mentions-bar')
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 9; i++) {
 			// width of bar - 50 (for the image) times ratio of mentions to mentions upper bound
-			(<HTMLElement>mentionsBar[i]).style.width = (( (<HTMLElement>barFlexes[i]).clientWidth - 50 ) * ( this.players[i].mentions / this.upperBound )).toString() + 'px'
+			(<HTMLElement>mentionsBar[i]).style.width = (( (<HTMLElement>barFlexes[i]).clientWidth - 55 ) * ( this.players[i].mentions / this.upperBound )).toString() + 'px'
 		}
 	}
 
