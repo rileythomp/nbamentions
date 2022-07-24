@@ -7,27 +7,36 @@
 	<div class='flex-container'>
 		<div id='controls'>
 			<select (change)='updateChart($event)'>
+				<option selected value='player'>players</option>
+				<option value="team">teams</option>
+			</select>
+			<br>
+			<br>
+			<select (change)='updateDuration($event)'>
 				<option value='hour'>past hour</option>
 				<option value="day">past 24 hours</option>
 				<option selected value="week">past week</option>
 				<option value="month">past month</option>
+				<option value="year">past year</option>
+				<option value="alltime">all time</option>
 			</select>
 		</div>
 
 		<div id='chart'>
-			<div class='player-row' *ngFor='let p of players.slice(0, 9)'>
+			<div class='player-row' *ngFor='let m of mentionList.slice(0, 9)'>
 				<div class='chart-player-flex'>
 					<div class='player-info player-name'>
-					<p>{{p.player}}</p>
+					<p>{{m.name}}</p>
 					</div>
 
 					<div class='bar-flex'>
 						<div  class='player-info mentions-bar'>
-							<p>{{p.mentions}}</p>
+							<p>{{m.mentions}}</p>
 						</div>
 
 						<div  class='player-info player-img'>
-							<span class="img-helper"></span><img src="{{p.img_url}}"  />
+							<span class="img-helper"></span>
+							<img [ngStyle]="{'border': (chartType == 'player') ? '1px solid black' : 'none'}" src="{{m.img_url}}"  />
 						</div>
 					</div>
 				</div>
@@ -36,8 +45,8 @@
 		</div>
 
 		<div id='list'>
-			<p *ngFor="let p of players.slice(9, 25); let i = index" [attr.data-index]="i">
-				{{i+10}}. {{p.player}} ({{p.mentions}})
+			<p *ngFor="let m of mentionList.slice(9, 25); let i = index" [attr.data-index]="i">
+				{{i+10}}. {{m.name}} ({{m.mentions}})
 			</p>
 		</div>
 	</div>
