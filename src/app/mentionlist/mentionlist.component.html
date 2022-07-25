@@ -22,11 +22,10 @@
                 No mentions for {{displayName}} in the selected time period
             </div>
             <div class='mention-comment' *ngFor='let m of mentions'>
-                <span class='author'>{{m.author}}</span>
+                <a class='author' target='blank' href='https://old.reddit.com/user/{{m.author}}'>{{m.author}}</a>
                 <p>{{m.comment}}</p>
                 <span>{{m.published}}</span>
-                <a href="{{m.comment_link}}" target='blank'>Comment Link</a>
-                <span class='score' [ngStyle]="{'color': (m.score > 1) ? 'green' : ((m.score == 1) ? 'black' : 'red')}">{{m.score}}</span>
+                <a href="{{m.link}}" target='blank'>Comment Link</a>
             </div>
             <div *ngIf='showLoading' class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
         </div>
