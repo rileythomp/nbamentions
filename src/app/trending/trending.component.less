@@ -1,0 +1,182 @@
+
+.content {
+    display: flex;
+    margin: 60px auto 30px;
+    padding: 0 16px;
+    max-width: 80vw;
+    flex-direction: column;
+    align-items: center;
+
+    .flex-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 1em;
+
+        #controls {
+            flex-grow: 1;
+            text-align: right;
+
+            select {
+                padding: 0.5em;
+                margin-bottom: 1em;
+                width: 9em;
+            }
+        }
+
+        #chart {
+            flex-grow: 2;
+            margin-left: 2em;
+            margin-right: 2em;
+            margin-bottom: 1em;
+
+            .player-row {
+                min-width: 40vw;
+
+                hr {
+                    width: 100%;
+                    border-bottom: 0;
+                    margin-top: 0.65em;
+                    margin-bottom: 0.65em;
+                }
+
+                .chart-player-flex {
+                    display: flex;
+                    flex-direction: row;
+
+                    .player-name {
+                        min-width: 17em;
+                        max-width: 17em;
+
+                        p {
+                            text-align: left;
+                            margin-right: 1em;
+                            font-weight: bold;
+                            font-size: 1.25em;
+                            margin-top: 0em;
+                            margin-bottom: 0em;
+                            a {
+                                color: black;
+                                text-decoration: none;
+                            }
+                        }
+
+                        #mobile-count {
+                            display: none;
+                        }
+                    }
+                
+                    .bar-flex {
+                        display: flex;
+                        width: 100%;
+
+                        .mentions-bar {
+                            background: linear-gradient(to right, #C9082A; lightcoral ;);
+                            border-radius: 1em;
+                            border: 1px solid black;
+                            justify-content: center;
+
+                            p {
+                                margin-left: 1em;
+                                color: white;
+                            }
+                        }
+
+                        .player-img {
+                            img {
+                                width: 45px;
+                                height: 45px;
+                                margin-left: 10px;
+                                vertical-align: middle;
+                                object-fit: cover;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #list {
+            flex-grow: 1;
+            p {
+                font-size: 1.1em;
+                font-weight: 500;
+                word-wrap: wrap;
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .content {
+        .flex-container {
+            #chart {
+                .player-row {
+                    .chart-player-flex {
+                        .player-name {
+                            #mobile-count {
+                                display: inline;
+                                font-weight: normal;
+                            }
+                        }
+                        .bar-flex {
+                            p {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        .flex-container {
+            #controls {
+                text-align: left;
+                div {
+                    display: inline;
+                    margin-right: 1em;
+                }
+            }
+
+            #chart {
+                margin: 0em;
+                width: 80vw;
+
+                .player-row {
+                    .chart-player-flex {
+                        .player-name {
+                            min-width: 9em;
+                            max-width: 9em;
+
+                            p {
+                                font-size: 1em;
+                            }
+
+                            #mobile-count {
+                                display: inline;
+                                font-weight: normal;
+                            }
+                        }
+
+                        .bar-flex {
+                            .mentions-bar {
+                                max-height: 2em;
+                                min-height: 2em;
+
+                                p {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

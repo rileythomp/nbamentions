@@ -1,0 +1,34 @@
+
+<div class="content" role="main">
+    <div class='flex-container'>
+        <div id='player-info' class='panel'>
+            <p>{{displayName}}</p>
+            <img id='img-pic' src="{{imgUrl}}" alt="">
+            <br>    
+            <div>
+                <select (change)='updateDuration($event)'>
+                    <option selected value='hour'>past hour</option>
+                    <option value="day">past 24 hours</option>
+                    <option value="week">past week</option>
+                    <option value="month">past month</option>
+                    <option value="year">past year</option>
+                    <option value="alltime">all time</option>
+                </select>
+            </div>
+        </div>
+    
+        <div class='panel' id='mentions-stream'>
+            <div id='show-empty' *ngIf='showEmpty'>
+                No mentions for {{displayName}} in the selected time period
+            </div>
+            <div class='mention-comment' *ngFor='let m of mentions'>
+                <span class='author'>{{m.author}}</span>
+                <p>{{m.comment}}</p>
+                <span>{{m.published}}</span>
+                <a href="{{m.comment_link}}" target='blank'>Comment Link</a>
+                <span class='score' [ngStyle]="{'color': (m.score > 1) ? 'green' : ((m.score == 1) ? 'black' : 'red')}">{{m.score}}</span>
+            </div>
+            <div *ngIf='showLoading' class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+</div>
