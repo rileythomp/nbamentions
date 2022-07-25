@@ -14,6 +14,8 @@ export class TrendingComponent implements OnInit {
 	upperBound: number = 0;
 	duration: string = 'week';
 	chartType: string = 'player';
+	showError: boolean = false;
+	showLoading: boolean = false;
 
 	constructor() { }
 
@@ -47,20 +49,24 @@ export class TrendingComponent implements OnInit {
 	}
 
 	getTrending() {
+		this.showLoading = true
 		this.getMentions<any>(`${this.ApiUrl}/api/v1/mentions?limit=${this.limit}&duration=${this.duration}&mention_type=${this.chartType}`)
 		.then(players => {
-				this.mentionList = players
-				let max = 0
-				for (let mention of this.mentionList) {
-					if (mention.mentions > max) {
-						max = mention.mentions
-					}
+			this.showLoading = false
+			this.mentionList = players
+			let max = 0
+			for (let mention of this.mentionList) {
+				if (mention.mentions > max) {
+					max = mention.mentions
 				}
-				// rounds numbers to their second most significant digit (e.g. 1234 -> 1300, 146,899 -> 150,000)
-				let orderOfMagnitude = Math.max(Math.pow(10, Math.floor(Math.log10(max)) - 1), 10)
-				this.upperBound = Math.ceil(max/orderOfMagnitude)*orderOfMagnitude
+			}
+			// rounds numbers to their second most significant digit (e.g. 1234 -> 1300, 146,899 -> 150,000)
+			let orderOfMagnitude = Math.max(Math.pow(10, Math.floor(Math.log10(max)) - 1), 10)
+			this.upperBound = Math.ceil(max/orderOfMagnitude)*orderOfMagnitude
 		}).catch(err => {
 				console.log(err);
+				this.showLoading = false
+				this.showError = true
 		})
 	}
 

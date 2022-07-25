@@ -21,6 +21,12 @@
 		</div>
 
 		<div id='chart'>
+            <div *ngIf='showLoading' class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+			<p class='error' *ngIf='showError'>
+				Sorry, unable to load r/NBA Mentions data at the moment.
+				<br> 
+				Please try again later.
+			</p>
 			<div class='player-row' *ngFor='let m of mentionList.slice(0, 9)'>
 				<div class='chart-player-flex'>
 					<div class='player-info player-name'>

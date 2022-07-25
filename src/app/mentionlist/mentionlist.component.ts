@@ -18,6 +18,7 @@ export class MentionlistComponent implements OnInit {
 	imgUrl: string = '';
 	showLoading: boolean = false;
 	showEmpty: boolean = false;
+	showError: boolean = false;
 
 	mentions: any[] = [];
 
@@ -112,6 +113,8 @@ export class MentionlistComponent implements OnInit {
 				}
 		}).catch(err => {
 				console.log(err);
+				this.showLoading = false
+				this.showError = true
 		})
 	}
 

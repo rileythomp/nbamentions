@@ -21,6 +21,11 @@
             <div id='show-empty' *ngIf='showEmpty'>
                 No mentions for {{displayName}} in the selected time period
             </div>
+            <p class='error' *ngIf='showError'>
+				Sorry, unable to load r/NBA Mentions data at the moment.
+				<br> 
+				Please try again later.
+			</p>
             <div class='mention-comment' *ngFor='let m of mentions'>
                 <a class='author' target='blank' href='https://old.reddit.com/user/{{m.author}}'>{{m.author}}</a>
                 <p>{{m.comment}}</p>
