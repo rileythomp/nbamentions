@@ -25,3 +25,25 @@
         white-space: nowrap;
     }
 }
+
+#info {
+    text-align:center;
+    position: fixed;
+    bottom: 1.5em;
+    right: 1.5em;
+
+    i {
+        font-size: 3em;
+    }
+
+    i:hover {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 600px) {
+    #info {
+        display: none;
+    }
+}
+
