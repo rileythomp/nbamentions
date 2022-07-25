@@ -82,6 +82,10 @@
                             margin-top: 0em;
                             margin-bottom: 0em;
                         }
+
+                        #mobile-count {
+                            display: none;
+                        }
                     }
                 
                     .bar-flex {
@@ -89,7 +93,7 @@
                         width: 100%;
 
                         .mentions-bar {
-                            background-color: #C9082A;
+                            background: linear-gradient(to right, #C9082A; lightcoral ;);
                             border-radius: 1em;
                             border: 1px solid black;
                             justify-content: center;
@@ -101,17 +105,11 @@
                         }
 
                         .player-img {
-                            .img-helper {
-                                display: inline-block;
-                                height: 100%;
-                                vertical-align: middle;
-                            }
-
                             img {
                                 width: 45px;
                                 height: 45px;
-                                vertical-align: middle;
                                 margin-left: 10px;
+                                vertical-align: middle;
                                 object-fit: cover;
                                 border-radius: 50%;
                             }
@@ -127,6 +125,30 @@
                 font-size: 1.1em;
                 font-weight: 500;
                 word-wrap: wrap;
+            }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .content {
+        .flex-container {
+            #chart {
+                .player-row {
+                    .chart-player-flex {
+                        .player-name {
+                            #mobile-count {
+                                display: inline;
+                                font-weight: normal;
+                            }
+                        }
+                        .bar-flex {
+                            p {
+                                display: none;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -156,6 +178,11 @@
                             p {
                                 font-size: 1em;
                             }
+
+                            #mobile-count {
+                                display: inline;
+                                font-weight: normal;
+                            }
                         }
 
                         .bar-flex {
@@ -166,10 +193,6 @@
                                 p {
                                     display: none;
                                 }
-                            }
-
-                            .player-img {
-                                display: none;
                             }
                         }
                     }
