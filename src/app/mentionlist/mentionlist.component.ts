@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { environment } from '../../environments/environment';
 
 @Component({
 	selector: 'app-mentionlist',
@@ -8,8 +9,7 @@ import { DatePipe } from '@angular/common';
 	styleUrls: ['./mentionlist.component.less']
 })
 export class MentionlistComponent implements OnInit {
-	// readonly ApiUrl = 'http://localhost:5000';
-	readonly ApiUrl = 'https://jrt-bot.herokuapp.com';
+	readonly ApiUrl = environment.API_URL;
 	paramName: string = '';
 	displayName: string = '';
 	page: number = 1;

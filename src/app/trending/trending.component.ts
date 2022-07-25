@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
 	selector: 'app-trending',
@@ -6,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./trending.component.less']
 })
 export class TrendingComponent implements OnInit {
-	// readonly ApiUrl = 'http://localhost:5000';
-	readonly ApiUrl = 'https://jrt-bot.herokuapp.com';
+	readonly ApiUrl = environment.API_URL;
 	readonly limit = 25;
 
 	mentionList: any[] = [];
