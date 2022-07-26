@@ -31,7 +31,10 @@
 					<div class='player-info player-name'>
 						<p class='pointer' routerLink='/{{m.url_name}}'>
 							{{m.name}}
-							<span *ngIf='m.is_trending	'>🔥</span>
+							<span class='tooltip' *ngIf='m.is_trending	'>
+								🔥
+								<span class="tooltiptext">{{m.name}} {{chartType == 'team' ? 'are' : 'is'}} getting more mentions than usual</span>
+							</span>
 						</p>
 						
 						<p id='mobile-count'>{{m.mentions}}</p>

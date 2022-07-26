@@ -63,3 +63,28 @@ html {
         transform: translate(24px, 0);
     }
 }
+
+.tooltip {
+    position: relative;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 15em;
+    margin-left: -7.5em; /* Use half of the width to center the tooltip */
+    bottom: 100%;
+    left: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 1em;
+    position: absolute;
+    z-index: 1;
+    font-size: 0.75em;
+    font-weight: normal;
+    padding: 5px;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
