@@ -14,7 +14,6 @@ export class MentionlistComponent implements OnInit {
 	displayName: string = '';
 	page: number = 1;
 	nextPage = 2;
-	duration: string = 'hour';
 	imgUrl: string = '';
 	showLoading: boolean = false;
 	showEmpty: boolean = false;
@@ -39,7 +38,7 @@ export class MentionlistComponent implements OnInit {
 			if (this.page+1 == this.nextPage) {
 				this.showLoading = true;
 				this.page += 1
-				this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&duration=${this.duration}&name=${this.paramName}`)
+				this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.paramName}`)
 				.then(mentions => {
 					this.showLoading = false;
 					if (mentions.length == 0) {
@@ -55,13 +54,6 @@ export class MentionlistComponent implements OnInit {
 				})
 			}
 		}
-	}
-
-	updateDuration(event: any) {
-		this.duration = event.target.value
-		this.page = 1
-		this.nextPage = 2
-		this.displayComments()
 	}
 
 	displayImage() {
@@ -89,7 +81,7 @@ export class MentionlistComponent implements OnInit {
 	displayComments() {
 		this.showEmpty = false;
 		this.showLoading = true;
-		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&duration=${this.duration}&name=${this.paramName}`)
+		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.paramName}`)
 		.then(mentions => {
 				this.showLoading = false;
 				if (mentions.length == 0) {

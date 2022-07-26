@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class TrendingComponent implements OnInit {
 	readonly ApiUrl = environment.API_URL;
-	readonly limit = 25;
+	readonly limit = 30;
 
 	mentionList: any[] = [];
 	upperBound: number = 0;

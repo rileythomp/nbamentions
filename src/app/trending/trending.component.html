@@ -15,7 +15,6 @@
 					<option selected value="week">past week</option>
 					<option value="month">past month</option>
 					<option value="year">past year</option>
-					<option value="alltime">all time</option>
 				</select>
 			</div>
 		</div>
@@ -30,7 +29,10 @@
 			<div class='player-row' *ngFor='let m of mentionList.slice(0, 9)'>
 				<div class='chart-player-flex'>
 					<div class='player-info player-name'>
-						<p class='pointer' routerLink='/{{m.url_name}}'>{{m.name}}</p>
+						<p class='pointer' routerLink='/{{m.url_name}}'>
+							{{m.name}}
+							<span *ngIf='m.is_trending	'>🔥</span>
+						</p>
 						
 						<p id='mobile-count'>{{m.mentions}}</p>
 					</div>
@@ -50,7 +52,7 @@
 		</div>
 
 		<div id='list'>
-			<p class='pointer' routerLink='/{{m.url_name}}' *ngFor="let m of mentionList.slice(9, 25); let i = index" [attr.data-index]="i">
+			<p class='pointer' routerLink='/{{m.url_name}}' *ngFor="let m of mentionList.slice(9, 30); let i = index" [attr.data-index]="i">
 				{{i+10}}. {{m.name}} ({{m.mentions}})
 			</p>
 		</div>
