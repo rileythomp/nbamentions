@@ -8,7 +8,7 @@
     
         <div class='panel' id='mentions-stream'>
             <div id='show-empty' *ngIf='showEmpty'>
-                No mentions for {{displayName}} in the selected time period
+                {{displayName}} has not been mentioned on r/NBA.
             </div>
             <p class='error' *ngIf='showError'>
 				Sorry, unable to load r/NBA Mentions data at the moment.

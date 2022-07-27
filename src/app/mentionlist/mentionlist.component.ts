@@ -81,7 +81,7 @@ export class MentionlistComponent implements OnInit {
 	displayComments() {
 		this.showEmpty = false;
 		this.showLoading = true;
-		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.paramName}`)
+		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.paramName}&duration=alltime`)
 		.then(mentions => {
 				this.showLoading = false;
 				if (mentions.length == 0) {
