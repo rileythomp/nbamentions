@@ -15,7 +15,7 @@ export class TrendingComponent implements OnInit {
 	searchResults: any[] = [];
 
 	upperBound: number = 0;
-	duration: string = 'week';
+	duration: string = 'day';
 	chartType: string = 'player';
 	showError: boolean = false;
 	showLoading: boolean = false;

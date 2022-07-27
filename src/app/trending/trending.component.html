@@ -11,8 +11,8 @@
 			<div>
 				<select (change)='updateDuration($event)'>
 					<option value='hour'>past hour</option>
-					<option value="day">past 24 hours</option>
-					<option selected value="week">past week</option>
+					<option selected value="day">past 24 hours</option>
+					<option value="week">past week</option>
 					<option value="month">past month</option>
 					<option value="year">past year</option>
 				</select>
@@ -40,7 +40,7 @@
 							{{m.name}}
 							<span class='tooltip' *ngIf='m.is_trending	'>
 								🔥
-								<span class="tooltiptext">{{m.name}} {{chartType == 'team' ? 'are' : 'is'}} getting more mentions than usual</span>
+								<span class="tooltiptext">{{m.name}} {{chartType == 'team' ? 'are' : 'is'}} getting more mentions than usual right now</span>
 							</span>
 						</p>
 						
