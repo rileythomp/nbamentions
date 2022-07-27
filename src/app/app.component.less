@@ -7,6 +7,52 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.modal {
+    border-radius: 1em;
+    background-color: #F5F5F5;
+    border: 2px solid black;
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2em;
+    width: 40em;
+
+    .close-x {
+        position: absolute;
+        top: 0.75em;
+        right: 0.75em;
+        cursor: pointer;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+
+    .close-x:hover {
+        color: #C9082A;
+    }
+
+    .modal-info {
+        margin-top: 1.5em;
+        margin-bottom: 0;
+        font-size: 1.25em;
+        
+        p {
+            margin-bottom: 0;
+            margin-top: 0.5em;
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	opacity: 0.5;
+}
+
 #header {
     position: absolute;
     top: 0;

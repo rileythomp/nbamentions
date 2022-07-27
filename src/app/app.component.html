@@ -5,6 +5,26 @@
 
 <router-outlet></router-outlet>
 
-<div id='info'>
+<div (click)='showModal=true' id='info'>
 	<i class="fa-solid fa-question"></i>
 </div>
+
+<div (click)='showModal=false' *ngIf='showModal' class='overlay'></div>
+
+<div *ngIf='showModal' class='modal'>
+	<p (click)='showModal=false' class='close-x'><i class="fa-solid fa-square-xmark"></i></p>
+	<div class='modal-info'>
+		<p>r/NBA Mentions displays the number of times a player or team has been mentioned on the r/NBA subreddit.</p>
+
+		<p>Use the controls to switch between players & teams, and to filter by different timeframes to see who is trending.</p>
+
+		<p>Click on a player or team name to see the comments that have mentioned them.</p>
+		
+		<p>A flame emoji beisde a name indicates that the player or team is being mentioned more than they usually are.</p>
+
+		<p>The data is updated in real time and is accurate as of the last time the page was refreshed.</p>
+
+		<p>Please report any issues to the <a href="https://github.com/rileythomp/nbamentions/issues" target='blank'>Github repo</a>.</p>
+	</div>
+</div>
+
