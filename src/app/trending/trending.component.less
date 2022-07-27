@@ -21,7 +21,39 @@
             select {
                 padding: 0.5em;
                 margin-bottom: 1em;
-                width: 9em;
+                width: 13.5em;
+            }
+
+            #search-container {
+                display: flex;
+                flex-direction: column;
+                float: right;
+                text-align: right;
+
+                input {
+                    padding: 0.5em;
+                    margin-bottom: 0em;
+                }
+    
+                .search-results {
+                    background-color: white;
+                    border: 1px solid black;
+                    float: right;
+                    position: absolute;
+                    margin-top: 2.25em;
+                    width: 12.8em;
+                    z-index: 1;
+
+                    p {
+                        margin: 0;
+                        padding: 1em;
+                        border-bottom: 1px solid black;
+                    }
+
+                    p:hover {
+                        background-color: #e6e6e6;
+                    }
+                }
             }
         }
 
@@ -147,9 +179,15 @@
         .flex-container {
             #controls {
                 text-align: left;
+                margin-bottom: 1em;
+
                 div {
                     display: inline;
                     margin-right: 1em;
+                }
+
+                #search-container {
+                    float: left;
                 }
             }
 

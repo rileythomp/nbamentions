@@ -8,22 +8,31 @@ import { environment } from '../../environments/environment';
 })
 export class TrendingComponent implements OnInit {
 	readonly ApiUrl = environment.API_URL;
-	readonly limit = 30;
+	readonly MentionsLimit = 30;
+	readonly SearchLimit = 10;
 
 	mentionList: any[] = [];
+	searchResults: any[] = [];
+
 	upperBound: number = 0;
 	duration: string = 'week';
 	chartType: string = 'player';
 	showError: boolean = false;
 	showLoading: boolean = false;
-
+	setBars: boolean = false;
+	showSearchResults = false;
+	
 	constructor() { }
 
 	ngOnInit() {
+		this.setBars = true;
 		this.getTrending()
 	}
 
 	ngAfterViewChecked() {
+		if (!this.setBars) {
+			return
+		}
 		let barFlexes = document.getElementsByClassName('bar-flex')
 		if (barFlexes.length != 9) {
 			return
@@ -35,7 +44,36 @@ export class TrendingComponent implements OnInit {
 		}
 	}
 
-	getMentions<T>(url: string): Promise<T> {
+	updateDuration(event: any) {
+		this.setBars = true;
+		this.duration = event.target.value
+		this.getTrending()
+	}
+
+	updateChart(event: any) {
+		this.setBars = true;
+		this.chartType = event.target.value
+		this.getTrending()
+	}
+
+	searchName(ev: any) {
+		let search = ev.target.value.slice(0, 25);
+		if (search.length < 1) {
+			this.showSearchResults = false;
+			return;
+		}
+		this.setBars = false;
+		this.mentionsApi<any>(`${this.ApiUrl}/api/v1/search?limit=${this.SearchLimit}&search=${search}`)
+		.then(names => {
+			this.searchResults = names;
+			this.showSearchResults = true;
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
+
+	mentionsApi<T>(url: string): Promise<T> {
 		return fetch(url)
 		  .then(response => {
 				if (!response.ok) {
@@ -50,7 +88,7 @@ export class TrendingComponent implements OnInit {
 
 	getTrending() {
 		this.showLoading = true
-		this.getMentions<any>(`${this.ApiUrl}/api/v1/mentions?limit=${this.limit}&duration=${this.duration}&mention_type=${this.chartType}`)
+		this.mentionsApi<any>(`${this.ApiUrl}/api/v1/mentions?limit=${this.MentionsLimit}&duration=${this.duration}&mention_type=${this.chartType}`)
 		.then(players => {
 			this.showLoading = false
 			this.mentionList = players
@@ -68,15 +106,5 @@ export class TrendingComponent implements OnInit {
 				this.showLoading = false
 				this.showError = true
 		})
-	}
-
-	updateDuration(event: any) {
-		this.duration = event.target.value
-		this.getTrending()
-	}
-
-	updateChart(event: any) {
-		this.chartType = event.target.value
-		this.getTrending()
 	}
 }

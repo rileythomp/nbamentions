@@ -17,6 +17,13 @@
 					<option value="year">past year</option>
 				</select>
 			</div>
+
+			<div id='search-container'>
+				<input type="text" placeholder='Search' (input)='searchName($event)' maxlength='25'>
+				<div *ngIf='showSearchResults' class='search-results'>
+					<p *ngFor='let res of searchResults' routerLink='/{{res.url_name}}'>{{res.name}}</p>
+				</div>
+			</div>
 		</div>
 
 		<div id='chart'>
