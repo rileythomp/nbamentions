@@ -1,6 +1,6 @@
 # nbamentions
 
-https://nbamentions.netlify.app
+https://nbamentions.com
 
 Site that displays the most popular players and teams on the r/NBA subreddit. Filter by different time frames to see who is trending. Click on or search for teams and players to see what comments they've been mentioned in.
 
