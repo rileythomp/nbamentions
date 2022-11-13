@@ -44,12 +44,12 @@
 							</span>
 						</p>
 						
-						<p id='mobile-count'>{{m.mentions}}</p>
+						<p id='mobile-count'>{{m.mentions.toLocaleString()}}</p>
 					</div>
 
 					<div class='bar-flex'>
 						<div  class='player-info mentions-bar'>
-							<p>{{m.mentions}}</p>
+							<p>{{m.mentions.toLocaleString()}}</p>
 						</div>
 
 						<div  class='player-info player-img'>
@@ -63,7 +63,7 @@
 
 		<div id='list'>
 			<p class='pointer' routerLink='/{{m.url_name}}' *ngFor="let m of mentionList.slice(9, 30); let i = index" [attr.data-index]="i">
-				{{i+10}}. {{m.name}} ({{m.mentions}})
+				{{i+10}}. {{m.name}} ({{m.mentions.toLocaleString()}})
 			</p>
 		</div>
 	</div>

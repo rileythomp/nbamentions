@@ -38,9 +38,10 @@ export class TrendingComponent implements OnInit {
 			return
 		}
 		let mentionsBar = document.getElementsByClassName('mentions-bar')
+		let barWidth = (<HTMLElement>barFlexes[0]).clientWidth;
 		for (let i = 0; i < 9; i++) {
 			// width of bar - 50 (for the image) times ratio of mentions to mentions upper bound
-			(<HTMLElement>mentionsBar[i]).style.width = (( (<HTMLElement>barFlexes[i]).clientWidth - 55 ) * ( this.mentionList[i].mentions / this.upperBound )).toString() + 'px'
+			(<HTMLElement>mentionsBar[i]).style.width = ((barWidth - 55 ) * (this.mentionList[i].mentions / this.upperBound )).toString() + 'px'
 		}
 	}
 
