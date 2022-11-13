@@ -90,9 +90,9 @@ export class TrendingComponent implements OnInit {
 	getTrending() {
 		this.showLoading = true
 		this.mentionsApi<any>(`${this.ApiUrl}/api/v1/mentions?limit=${this.MentionsLimit}&duration=${this.duration}&mention_type=${this.chartType}`)
-		.then(players => {
+		.then(resp => {
 			this.showLoading = false
-			this.mentionList = players
+			this.mentionList = resp
 			let max = 0
 			for (let mention of this.mentionList) {
 				if (mention.mentions > max) {

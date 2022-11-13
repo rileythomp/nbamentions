@@ -3,18 +3,19 @@
 		<div id='controls'>
 			<div>
 				<select (change)='updateChart($event)'>
-					<option selected value='player'>players</option>
-					<option value="team">teams</option>
+					<option selected value='player'>Players</option>
+					<option value="team">Teams</option>
+					<option style="display: none" value="posters">Redditors</option>
 				</select>
 			</div>
 			
 			<div>
 				<select (change)='updateDuration($event)'>
-					<option value='hour'>past hour</option>
-					<option selected value="day">past 24 hours</option>
-					<option value="week">past week</option>
-					<option value="month">past month</option>
-					<option value="year">past year</option>
+					<option value='hour'>Past hour</option>
+					<option selected value="day">Past 24 hours</option>
+					<option value="week">Past week</option>
+					<option value="month">Past month</option>
+					<option value="year">Past year</option>
 				</select>
 			</div>
 

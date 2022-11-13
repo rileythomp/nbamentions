@@ -21,6 +21,8 @@ export class MentionlistComponent implements OnInit {
 
 	mentions: any[] = [];
 
+	stats: any = {};
+
 	constructor(private route: ActivatedRoute) { }
 
 	ngOnInit(): void {
@@ -29,7 +31,21 @@ export class MentionlistComponent implements OnInit {
 			this.displayName = this.paramName.replaceAll('-', ' ').toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ');
 			this.displayComments();
 			this.displayImage();
+			this.displayStats();
 		})
+	}
+
+	getData<T>(url: string): Promise<T> {
+		return fetch(url)
+		  .then(response => {
+				if (!response.ok) {
+				  throw new Error(response.statusText)
+				}
+				return response.json()
+		  })
+		  .catch(err => {
+				console.log(err)
+		  })
 	}
 
 	@HostListener('window:scroll', ['$event'])
@@ -65,19 +81,6 @@ export class MentionlistComponent implements OnInit {
 		})
 	}
 
-	getData<T>(url: string): Promise<T> {
-		return fetch(url)
-		  .then(response => {
-				if (!response.ok) {
-				  throw new Error(response.statusText)
-				}
-				return response.json()
-		  })
-		  .catch(err => {
-				console.log(err)
-		  })
-	}
-
 	displayComments() {
 		this.showEmpty = false;
 		this.showLoading = true;
@@ -107,6 +110,17 @@ export class MentionlistComponent implements OnInit {
 				console.log(err);
 				this.showLoading = false
 				this.showError = true
+		})
+	}
+
+	displayStats() {
+		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/stats?name=${this.paramName}`)
+		.then(stats => {
+			this.stats = stats
+		}).catch(err => {
+			console.log(err)
+			this.showLoading = false
+			this.showError = true
 		})
 	}
 

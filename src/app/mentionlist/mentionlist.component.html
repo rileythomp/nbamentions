@@ -2,8 +2,20 @@
 <div class="content" role="main">
     <div class='flex-container'>
         <div id='player-info' class='panel'>
-            <p>{{displayName}}</p>
+            <h1>{{displayName}}</h1>
             <img id='img-pic' src="{{imgUrl}}" alt="">
+
+            <div id='player-stats'>
+                <p><b>Most mentioned as:</b> {{stats.mostMentionedAs}}</p>
+                <p><b>Biggest fan:</b>
+                    {{stats.biggestFan}} <br>
+                    ({{stats.biggestFanMentions.toLocaleString()}} times)</p>
+                <p><b>Mentions this hour:</b> {{stats.hourMentions.toLocaleString()}}</p>
+                <p><b>Mentions today:</b> {{stats.dayMentions.toLocaleString()}}</p>
+                <p><b>Mentions this week:</b> {{stats.weekMentions.toLocaleString()}}</p>
+                <p><b>Mentions this month:</b> {{stats.monthMentions.toLocaleString()}}</p>
+                <p><b>Mentions this year:</b> {{stats.yearMentions.toLocaleString()}}</p>
+            </div>
         </div>
     
         <div class='panel' id='mentions-stream'>
