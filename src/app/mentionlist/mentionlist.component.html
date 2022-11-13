@@ -7,9 +7,10 @@
 
             <div id='player-stats'>
                 <p><b>Most mentioned as:</b> {{stats.mostMentionedAs}}</p>
-                <p><b>Biggest fan:</b>
-                    {{stats.biggestFan}} <br>
-                    ({{stats.biggestFanMentions.toLocaleString()}} times)</p>
+                <p><b>Biggest fan: </b>
+                    <a href="https://www.reddit.com/user/{{stats.biggestFan}}">{{stats.biggestFan}}</a>
+                    <br>
+                    ({{stats.biggestFanMentions.toLocaleString()}} mentions)</p>
                 <p><b>Mentions this hour:</b> {{stats.hourMentions.toLocaleString()}}</p>
                 <p><b>Mentions today:</b> {{stats.dayMentions.toLocaleString()}}</p>
                 <p><b>Mentions this week:</b> {{stats.weekMentions.toLocaleString()}}</p>
