@@ -40,8 +40,8 @@ export class TrendingComponent implements OnInit {
 		let mentionsBar = document.getElementsByClassName('mentions-bar')
 		let barWidth = (<HTMLElement>barFlexes[0]).clientWidth;
 		for (let i = 0; i < 9; i++) {
-			// width of bar - 50 (for the image) times ratio of mentions to mentions upper bound
-			(<HTMLElement>mentionsBar[i]).style.width = ((barWidth - 55 ) * (this.mentionList[i].mentions / this.upperBound )).toString() + 'px'
+			// width of bar - 55 (for the image) times ratio of mentions to mentions upper bound
+			(<HTMLElement>mentionsBar[i]).style.width = ((barWidth - (this.chartType != 'poster' ? 55 : 0)) * (this.mentionList[i].numPosts / this.upperBound )).toString() + 'px'
 		}
 	}
 
@@ -95,8 +95,8 @@ export class TrendingComponent implements OnInit {
 			this.mentionList = resp
 			let max = 0
 			for (let mention of this.mentionList) {
-				if (mention.mentions > max) {
-					max = mention.mentions
+				if (mention.numPosts > max) {
+					max = mention.numPosts
 				}
 			}
 			// rounds numbers to their second most significant digit (e.g. 1234 -> 1300, 146,899 -> 150,000)
