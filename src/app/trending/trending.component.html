@@ -2,7 +2,7 @@
 	<div class='flex-container'>
 		<div id='controls'>
 			<div>
-				<select (change)='updateChart($event)'>
+				<select id="chart-type" (change)='updateChart($event)'>
 					<option selected value='player'>Players</option>
 					<option value="team">Teams</option>
 					<option value="poster">Redditors</option>
@@ -10,7 +10,7 @@
 			</div>
 			
 			<div>
-				<select (change)='updateDuration($event)'>
+				<select id="duration-select" (change)='updateDuration($event)'>
 					<option value='hour'>Past hour</option>
 					<option selected value="day">Past 24 hours</option>
 					<option value="week">Past week</option>

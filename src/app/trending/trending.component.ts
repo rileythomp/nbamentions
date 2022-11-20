@@ -48,12 +48,14 @@ export class TrendingComponent implements OnInit {
 	updateDuration(event: any) {
 		this.setBars = true;
 		this.duration = event.target.value
+		localStorage.setItem('duration', this.duration)
 		this.getTrending()
 	}
 
 	updateChart(event: any) {
 		this.setBars = true;
 		this.chartType = event.target.value
+		localStorage.setItem('chartType', this.chartType)
 		this.getTrending()
 	}
 
@@ -88,6 +90,10 @@ export class TrendingComponent implements OnInit {
 	}
 
 	getTrending() {
+		this.duration = localStorage.getItem('duration') ?? this.duration;
+		(<HTMLSelectElement>document.getElementById('duration-select')).value = this.duration
+		this.chartType = localStorage.getItem('chartType') ?? this.chartType;
+		(<HTMLSelectElement>document.getElementById('chart-type')).value = this.chartType
 		this.showLoading = true
 		this.mentionsApi<any>(`${this.ApiUrl}/api/v1/mentions?limit=${this.MentionsLimit}&duration=${this.duration}&mention_type=${this.chartType}`)
 		.then(resp => {
