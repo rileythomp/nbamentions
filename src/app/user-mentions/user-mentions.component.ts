@@ -10,7 +10,6 @@ import { DatePipe } from '@angular/common';
 })
 export class UserMentionsComponent implements OnInit {
 	readonly ApiUrl = environment.API_URL;
-	paramName: string = '';
 	displayName: string = '';
 	page: number = 1;
 	nextPage = 2;
@@ -27,10 +26,8 @@ export class UserMentionsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.route.params.subscribe(params => {
-			this.paramName = params['name'];
-			this.displayName = this.paramName.replaceAll('-', ' ').toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(' ');
+			this.displayName = params['name'];
 			this.displayComments();
-			this.displayImage();
 			this.displayStats();
 		})
 	}
@@ -54,7 +51,7 @@ export class UserMentionsComponent implements OnInit {
 			if (this.page+1 == this.nextPage) {
 				this.showLoading = true;
 				this.page += 1
-				this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.paramName}`)
+				this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.displayName}`)
 				.then(mentions => {
 					this.showLoading = false;
 					if (mentions.length == 0) {
@@ -72,19 +69,10 @@ export class UserMentionsComponent implements OnInit {
 		}
 	}
 
-	displayImage() {
-		this.getData<any>(`${this.ApiUrl}/api/v1/image?name=${this.paramName}`)
-		.then(imgUrl => {
-			this.imgUrl = imgUrl
-		}).catch(err => {
-			console.log(err)
-		})
-	}
-
 	displayComments() {
 		this.showEmpty = false;
 		this.showLoading = true;
-		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.paramName}&duration=alltime`)
+		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.displayName}&duration=alltime`)
 		.then(mentions => {
 				this.showLoading = false;
 				if (mentions.length == 0) {
@@ -114,7 +102,7 @@ export class UserMentionsComponent implements OnInit {
 	}
 
 	displayStats() {
-		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/stats?name=${this.paramName}`)
+		this.getData<any>(`${this.ApiUrl}/api/v1/redditor/stats?name=${this.displayName}`)
 		.then(stats => {
 			this.stats = stats
 		}).catch(err => {
