@@ -5,9 +5,13 @@
             <h1>{{displayName}}</h1>
             <div id='player-stats'>
                 <p><b>Favourite player: </b>
-                    <a target="blank" href="https://old.reddit.com/user/{{stats.biggestFan}}">{{stats.favPlayer}}</a>
+                    <a routerLink="/{{stats.favPlayer.split(' ').join('-')}}">{{stats.favPlayer}}</a>
                     <br>
                     ({{stats.favPlayerMentions.toLocaleString()}} mentions)</p>
+                <p><b>Favourite team: </b>
+                    <a routerLink="/{{stats.favTeam.split(' ').join('-')}}">{{stats.favTeam}}</a>
+                    <br>
+                        ({{stats.favTeamMentions.toLocaleString()}} mentions)</p>
                 <p><b>Posts this year:</b> {{stats.yearPosts.toLocaleString()}}</p>
                 <p><b>Posts this month:</b> {{stats.monthPosts.toLocaleString()}}</p>
                 <p><b>Posts this week:</b> {{stats.weekPosts.toLocaleString()}}</p>

@@ -8,7 +8,7 @@
             <div id='player-stats'>
                 <p><b>Most mentioned as:</b> {{stats.mostMentionedAs}}</p>
                 <p><b>Biggest fan: </b>
-                    <a target="blank" href="https://old.reddit.com/user/{{stats.biggestFan}}">{{stats.biggestFan}}</a>
+                    <a routerLink="/user/{{stats.biggestFan}}">{{stats.biggestFan}}</a>
                     <br>
                     ({{stats.biggestFanMentions.toLocaleString()}} mentions)</p>
                 <p><b>Mentions this year:</b> {{stats.yearMentions.toLocaleString()}}</p>

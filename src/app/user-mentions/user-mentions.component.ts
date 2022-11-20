@@ -51,7 +51,7 @@ export class UserMentionsComponent implements OnInit {
 			if (this.page+1 == this.nextPage) {
 				this.showLoading = true;
 				this.page += 1
-				this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.displayName}`)
+				this.getData<any>(`${this.ApiUrl}/api/v1/redditor/posts?page=${this.page}&name=${this.displayName}&duration=alltime`)
 				.then(mentions => {
 					this.showLoading = false;
 					if (mentions.length == 0) {
@@ -72,7 +72,7 @@ export class UserMentionsComponent implements OnInit {
 	displayComments() {
 		this.showEmpty = false;
 		this.showLoading = true;
-		this.getData<any>(`${this.ApiUrl}/api/v1/mentions/comments?page=${this.page}&name=${this.displayName}&duration=alltime`)
+		this.getData<any>(`${this.ApiUrl}/api/v1/redditor/posts?page=${this.page}&name=${this.displayName}&duration=alltime`)
 		.then(mentions => {
 				this.showLoading = false;
 				if (mentions.length == 0) {
@@ -85,15 +85,6 @@ export class UserMentionsComponent implements OnInit {
 					this.mentions.push(mentions[i])
 				}
 				this.mentions = mentions
-				if (this.mentions.length > 0) {
-					if (this.mentions[0].mention_type == 'team') {
-						(<HTMLImageElement>document.getElementById('img-pic')).style.border = 'none';
-						(<HTMLImageElement>document.getElementById('img-pic')).style.borderRadius = '0px';
-					} else if (this.mentions[0].mention_type == 'player') {
-						(<HTMLImageElement>document.getElementById('img-pic')).style.border = '1px solid black';
-						(<HTMLImageElement>document.getElementById('img-pic')).style.borderRadius = '50%';
-					}
-				}
 		}).catch(err => {
 				console.log(err);
 				this.showLoading = false
