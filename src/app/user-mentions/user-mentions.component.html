@@ -1,0 +1,41 @@
+
+<div class="content" role="main">
+    <div class='flex-container'>
+        <div id='player-info' class='panel'>
+            <h1>{{displayName}}</h1>
+            <img id='img-pic' src="{{imgUrl}}" alt="">
+
+            <div id='player-stats'>
+                <p><b>Most mentioned as:</b> {{stats.mostMentionedAs}}</p>
+                <p><b>Biggest fan: </b>
+                    <a target="blank" href="https://old.reddit.com/user/{{stats.biggestFan}}">{{stats.biggestFan}}</a>
+                    <br>
+                    ({{stats.biggestFanMentions.toLocaleString()}} mentions)</p>
+                <p><b>Mentions this hour:</b> {{stats.hourMentions.toLocaleString()}}</p>
+                <p><b>Mentions today:</b> {{stats.dayMentions.toLocaleString()}}</p>
+                <p><b>Mentions this week:</b> {{stats.weekMentions.toLocaleString()}}</p>
+                <p><b>Mentions this month:</b> {{stats.monthMentions.toLocaleString()}}</p>
+                <p><b>Mentions this year:</b> {{stats.yearMentions.toLocaleString()}}</p>
+            </div>
+        </div>
+    
+        <div class='panel' id='mentions-stream'>
+            <div id='show-empty' *ngIf='showEmpty'>
+                {{displayName}} has not been mentioned on r/NBA.
+            </div>
+            <p class='error' *ngIf='showError'>
+				Sorry, unable to load r/NBA Mentions data at the moment.
+				<br> 
+				Please try again later.
+			</p>
+            <div class='mention-comment' *ngFor='let m of mentions'>
+                <a class='author' target='blank' href='https://old.reddit.com/user/{{m.author}}'>{{m.author}}</a>
+                on <a class='post-link' target='blank' href="{{m.link.split('/').slice(0, 8).join('/')}}">{{m.link.split('/').slice(7, 8).join('/')}}</a>
+                <p>{{m.comment}}</p>
+                <span>{{m.published}}</span>
+                <a href="{{m.link}}" target='blank'>Comment Link</a>
+            </div>
+            <div *ngIf='showLoading' class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+</div>

@@ -37,9 +37,9 @@
 			<div class='player-row' *ngFor='let m of mentionList.slice(0, 9)'>
 				<div class='chart-player-flex'>
 					<div class='player-info player-name'>
-						<p class='pointer' routerLink='/{{m.urlName}}'>
-							<span *ngIf="chartType != 'poster'">{{m.name}}</span>
-							<span *ngIf="chartType == 'poster'"><a target='blank' href="https://old.reddit.com/user/{{m.name}}">{{m.name}}</a></span>
+						<p class='pointer'>
+							<span *ngIf="chartType != 'poster'" routerLink='/{{m.urlName}}'>{{m.name}}</span>
+							<span *ngIf="chartType == 'poster'"  routerLink='/user/{{m.name}}'>{{m.name}}</span>
 							<span class='tooltip' *ngIf='m.aboveAvg'>
 								🔥
 								<span class="tooltiptext">
@@ -70,10 +70,10 @@
 		</div>
 
 		<div id='list'>
-			<p class='pointer' routerLink='/{{m.urlName}}' *ngFor="let m of mentionList.slice(9, 30); let i = index" [attr.data-index]="i">
+			<p class='pointer' *ngFor="let m of mentionList.slice(9, 30); let i = index" [attr.data-index]="i">
 				{{i+10}}. 
-				<span *ngIf="chartType != 'poster'" routerLink='/{{m.urlName}}'>{{m.name}}</span>
-				<span *ngIf="chartType == 'poster'"><a class='no-decoration' target='blank' href="https://old.reddit.com/user/{{m.name}}">{{m.name}}</a></span>
+				<span *ngIf="chartType != 'poster'"  routerLink='/{{m.urlName}}'>{{m.name}}</span>
+				<span *ngIf="chartType == 'poster'"  routerLink='/user/{{m.name}}'>{{m.name}}</span>
 				({{m.numPosts.toLocaleString()}})
 			</p>
 		</div>
