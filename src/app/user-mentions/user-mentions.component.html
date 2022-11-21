@@ -4,11 +4,11 @@
         <div id='player-info' class='panel'>
             <h1>{{displayName}}</h1>
             <div id='player-stats'>
-                <p><b>Favourite player: </b>
+                <p><b>Favourite player: </b> <br>
                     <a routerLink="/{{stats.favPlayer.split(' ').join('-')}}">{{stats.favPlayer}}</a>
                     <br>
                     ({{stats.favPlayerMentions.toLocaleString()}} mentions)</p>
-                <p><b>Favourite team: </b>
+                <p><b>Favourite team: </b> <br>
                     <a routerLink="/{{stats.favTeam.split(' ').join('-')}}">{{stats.favTeam}}</a>
                     <br>
                         ({{stats.favTeamMentions.toLocaleString()}} mentions)</p>
