@@ -30,7 +30,7 @@
 				Please try again later.
 			</p>
             <div class='mention-comment' *ngFor='let m of mentions'>
-                <a class='author' target='blank' href='https://old.reddit.com/user/{{m.author}}'>{{m.author}}</a>
+                <a class='author' routerLink="/user/{{m.author}}">{{m.author}}</a>
                 on <a class='post-link' target='blank' href="{{m.link.split('/').slice(0, 8).join('/')}}">{{m.link.split('/').slice(7, 8).join('/')}}</a>
                 <p>{{m.comment}}</p>
                 <span>{{m.published}}</span>
