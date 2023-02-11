@@ -1,0 +1,34 @@
+<div class="content" role="main">
+    <ul>
+        <li (click)="showChart('player')">Player Chart</li>
+        <li (click)="showChart('team')">Team Chart</li>
+        <li (click)="showChart('redditor')"> Redditor Chart</li>
+    </ul>
+
+    <div *ngIf="showPlayerChart" class="chart">
+        <iframe src='https://flo.uri.sh/visualisation/12662980/embed' title='Interactive or visual content' class='flourish-embed-iframe' frameborder='0' scrolling='no' style='width:100%;height:600px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+        <div style='width:100%!;margin-top:4px!important;text-align:right!important;'>
+            <a target="blank" class='flourish-credit' href='https://public.flourish.studio/visualisation/12662980/?utm_source=embed&utm_campaign=visualisation/12662980' style='text-decoration:none!important'>
+                <img alt='Made with Flourish' src='https://public.flourish.studio/resources/made_with_flourish.svg' style='width:105px!important;height:16px!important;border:none!important;margin:0!important;'>
+            </a>
+        </div>
+    </div>
+
+    <div *ngIf="showTeamChart" class="chart">
+        <iframe src='https://flo.uri.sh/visualisation/12664503/embed' title='Interactive or visual content' class='flourish-embed-iframe' frameborder='0' scrolling='no' style='width:100%;height:600px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+        <div style='width:100%!;margin-top:4px!important;text-align:right!important;'>
+            <a target="blank" class='flourish-credit' href='https://public.flourish.studio/visualisation/12664503/?utm_source=embed&utm_campaign=visualisation/12664503' style='text-decoration:none!important'>
+                <img alt='Made with Flourish' src='https://public.flourish.studio/resources/made_with_flourish.svg' style='width:105px!important;height:16px!important;border:none!important;margin:0!important;'>
+            </a>
+        </div>
+    </div>
+
+    <div *ngIf="showRedditorChart" class="chart">
+        <iframe src='https://flo.uri.sh/visualisation/12664721/embed' title='Interactive or visual content' class='flourish-embed-iframe' frameborder='0' scrolling='no' style='width:100%;height:600px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+        <div style='width:100%!;margin-top:4px!important;text-align:right!important;'>
+            <a target="blank" class='flourish-credit' href='https://public.flourish.studio/visualisation/12664721/?utm_source=embed&utm_campaign=visualisation/12664721' style='text-decoration:none!important'>
+                <img alt='Made with Flourish' src='https://public.flourish.studio/resources/made_with_flourish.svg' style='width:105px!important;height:16px!important;border:none!important;margin:0!important;'>
+            </a>
+        </div>
+    </div>
+</div>
