@@ -1,0 +1,19 @@
+
+<div class="content" role="main">
+    <div id='mentions-stream'>
+        <p id="reload-stream" (click)="displayComments();">Update stream</p>
+        <p class='error' *ngIf='showError'>
+            Sorry, unable to load r/NBA Mentions data at the moment.
+            <br> 
+            Please try again later.
+        </p>
+        <div class='mention-comment' *ngFor='let m of mentions'>
+            <a class='author' routerLink="/user/{{m.author}}">{{m.author}}</a>
+            on <a class='post-link' target='blank' href="{{m.link.split('/').slice(0, 8).join('/')}}">{{m.link.split('/').slice(7, 8).join('/')}}</a>
+            <p>{{m.comment}}</p>
+            <span>{{m.published}}</span>
+            <a href="{{m.link}}" target='blank'>Comment Link</a>
+        </div>
+        <div *ngIf='showLoading' class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+</div>

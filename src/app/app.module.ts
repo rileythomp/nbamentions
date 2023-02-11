@@ -7,6 +7,7 @@ import { MentionlistComponent } from './mentionlist/mentionlist.component';
 import { TrendingComponent } from './trending/trending.component';
 import { UserMentionsComponent } from './user-mentions/user-mentions.component';
 import { ChartsComponent } from './charts/charts.component';
+import { StreamComponent } from './stream/stream.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ChartsComponent } from './charts/charts.component';
     MentionlistComponent,
     TrendingComponent,
     UserMentionsComponent,
-    ChartsComponent
+    ChartsComponent,
+    StreamComponent
   ],
   imports: [
     BrowserModule,
